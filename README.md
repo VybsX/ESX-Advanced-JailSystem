@@ -11,6 +11,7 @@ This is a custom jail system for FiveM that allows admins or police to jail play
 - **Anti-Escape System**: Players cannot escape the jail zone.
 - **Automatic Release**: Players are automatically released after their jail time ends.
 - **Discord Logs**: Logs all jail and unjail actions to a Discord webhook.
+- **Custom MLO**: Includes a custom MLO (Map Location Object) for the jail.
 
 ---
 
@@ -72,6 +73,14 @@ Before using this script, ensure you have the following dependencies installed a
 4. **Configure Discord Webhook**:
    - Replace the `discordWebhook` variable in `server.lua` with your Discord webhook URL.
 
+5. **Install the MLO**:
+   - Download the custom MLO for the jail system from this link: [Jail MLO Download](https://drive.google.com/file/d/1oO9vjUKwoNtuyu4rLf7bOhIYZXAsehjE/view?usp=sharing).
+   - Extract the MLO files and place them in a new folder (e.g., `jail-mlo`) within your `resources` directory.
+   - Add the following line to your `server.cfg` file:
+     ```plaintext
+     ensure jail-mlo
+     ```
+
 ---
 
 ## Usage
@@ -81,41 +90,35 @@ Before using this script, ensure you have the following dependencies installed a
 - **Jail a Player**:
   ```plaintext
   /jail [playerID] [timeInMinutes] [reason]
-  ```
-  Example:
-  ```plaintext
-  /jail 1 10 "Breaking server rules"
-  ```
+Example:
 
-- **Unjail a Player**:
-  ```plaintext
-  /unjail [playerID]
-  ```
-  Example:
-  ```plaintext
-  /unjail 1
-  ```
+plaintext
+Copy
+/jail 1 10 "Breaking server rules"
+Unjail a Player:
 
----
+plaintext
+Copy
+/unjail [playerID]
+Example:
 
-## Configuration
+plaintext
+Copy
+/unjail 1
+Configuration
+Jail Locations
+The jail locations are pre-configured to work with the provided MLO. You can customize the jail locations by editing the jailLocations table in client.lua. Add or remove coordinates as needed.
 
-### Jail Locations
-You can customize the jail locations by editing the `jailLocations` table in `client.lua`. Add or remove coordinates as needed.
+Release Location
+The release location is set in the releaseCoords variable in client.lua. Update this to your desired release point.
 
-### Release Location
-The release location is set in the `releaseCoords` variable in `client.lua`. Update this to your desired release point.
+Escape Range
+The escapeRange variable in client.lua determines how far a player can go from their jail location before being teleported back. Adjust this value as needed.
 
-### Escape Range
-The `escapeRange` variable in `client.lua` determines how far a player can go from their jail location before being teleported back. Adjust this value as needed.
+License
+This script is licensed under the MIT License. Feel free to modify and distribute it as needed.
 
----
-
-## License
-
-This script is licensed under the VYBSX License. Feel free to modify and distribute it as needed.
-
----
+Support
+If you encounter any issues or have questions, feel free to open an issue in this repository or contact the developer.
 
 Enjoy using the jail system! 🚔
-```
